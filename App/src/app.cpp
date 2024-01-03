@@ -1,4 +1,5 @@
 #include "chimera.h"
+#include <memory>
 
 class App : public Chimera::Application {
     public:
@@ -6,9 +7,7 @@ class App : public Chimera::Application {
         ~App() {};
 };
 
-int main(void) {
-    App *app = new App();
-    app->Run();
-    delete app;
-    return 0;
+
+std::unique_ptr<Chimera::Application> Chimera::CreateApplication() {
+    return std::make_unique<Chimera::Application>();
 }
