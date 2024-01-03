@@ -3,8 +3,8 @@
 TO-DO
 
 - set project
-- [ ] set project & entrypoint in dynamic lib
-- [ ] write CMakeLists file to build
+- [x] set project & entrypoint in dynamic lib
+- [x] write CMakeLists file to build
 - [ ] set precompiled header using cmake
 - [ ] set logger : spdlog lib (external lib)
 
