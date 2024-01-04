@@ -1,8 +1,6 @@
 #pragma once
 
-#include "core.h"
-#include <memory>
-
+#include "pch.h"
 namespace Chimera {
     class CHIMERA_API Application {
         public:

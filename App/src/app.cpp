@@ -1,5 +1,5 @@
+
 #include "chimera.h"
-#include <memory>
 
 class App : public Chimera::Application {
     public:

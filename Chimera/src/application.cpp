@@ -1,6 +1,5 @@
+#include "pch.h"
 #include "application.h"
-
-#include <iostream>
 
 namespace Chimera {
 
