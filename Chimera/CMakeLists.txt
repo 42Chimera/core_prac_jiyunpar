@@ -16,7 +16,12 @@ elseif(APPLE)
     target_compile_definitions(${PROJECT_NAME} PUBLIC CM_PLATFORM_MACOS)
 endif()
 
+# link library
+target_link_directories(${PROJECT_NAME} PUBLIC ${DEP_LIB_DIR})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${DEP_LIBS})
+
 #precompiled header
 target_precompile_headers(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/pch.h)
+
 # 헤더 파일 디렉토리 포함
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/ ${DEP_INCLUDE_DIR})
