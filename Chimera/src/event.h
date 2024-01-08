@@ -1,6 +1,5 @@
 #pragma once
 
-#include "core.h"
 #include "pch.h"
 
 namespace Chimera {
@@ -41,7 +40,7 @@ class CHIMERA_API Event {
     virtual std::string ToString() const { return GetName(); }
 
     inline bool IsInCategory(EventCategory category) {
-        return GetCategoryFlag() & category;
+        return GetCategoryFlags() & category;
     }
 
     bool GetHandled() const { return mHandled; }
