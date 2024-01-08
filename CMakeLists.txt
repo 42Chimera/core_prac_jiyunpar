@@ -11,6 +11,16 @@ set(DEP_LIB_DIR ${DEP_INSTALL_DIR}/lib)
 set(DEP_LIST)
 set(DEP_LIBS)
 
+if(APPLE)
+	INCLUDE_DIRECTORIES(/System/Library/Frameworks)
+	FIND_LIBRARY(COCOA_LIBRARY Cocoa)
+	FIND_LIBRARY(OpenGL_LIBRARY OpenGL)
+	FIND_LIBRARY(IOKit_LIBRARY IOKit)
+	FIND_LIBRARY(CoreVideo_LIBRARY CoreVideo)
+	MARK_AS_ADVANCED(COCOA_LIBRARY OpenGL_LIBRARY)
+	SET(DEP_LIBS ${COCOA_LIBRARY} ${IOKit_LIBRARY} ${OpenGL_LIBRARY} ${CoreVideo_LIBRARY})
+endif(APPLE)
+
 include(Dependency.cmake)
 
 add_subdirectory(Chimera)
