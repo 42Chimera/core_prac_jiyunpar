@@ -2,13 +2,15 @@
 
 namespace Chimera {
 
-    Application::Application() {}
+    Application::Application() {
+        mWindow = std::unique_ptr<Window>(Window::CreateWindow());
+    }
 
     Application::~Application() {}
 
     void Application::Run() {
-        while(true) {
-
+        while(mRunning) {
+            mWindow->OnUpdate();
         }
     }
 };

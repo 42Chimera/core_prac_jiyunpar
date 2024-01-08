@@ -9,5 +9,5 @@ class App : public Chimera::Application {
 
 
 std::unique_ptr<Chimera::Application> Chimera::CreateApplication() {
-    return std::make_unique<Chimera::Application>();
+    return std::make_unique<App>();
 }
