@@ -24,4 +24,6 @@ target_link_libraries(${PROJECT_NAME} PUBLIC ${DEP_LIBS})
 target_precompile_headers(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/pch.h)
 
 # 헤더 파일 디렉토리 포함
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/ ${DEP_INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${DEP_INCLUDE_DIR})
