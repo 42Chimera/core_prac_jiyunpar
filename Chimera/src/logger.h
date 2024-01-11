@@ -2,7 +2,7 @@
 
 #include "pch.h"
 #include "spdlog/spdlog.h"
-
+#include "spdlog/fmt/ostr.h"
 namespace Chimera {
 class CHIMERA_API Logger {
    public:

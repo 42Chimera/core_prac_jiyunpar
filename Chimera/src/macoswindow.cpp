@@ -1,5 +1,7 @@
 #include "macoswindow.h"
 
+#include "applicationevent.h"
+
 namespace Chimera {
 
 static bool sGLFWInitialized = false;
@@ -30,6 +32,13 @@ void MacOSWindow::Init(const WindowProps& props) {
     glfwMakeContextCurrent(mWindow);
     glfwSetWindowUserPointer(mWindow, &mData);
     SetVSync(true);
+
+    glfwSetWindowCloseCallback(mWindow, [](GLFWwindow* window) {
+        WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+        WindowCloseEvent event;
+        data.EventCallBack(event);
+    });
 }
 void MacOSWindow::Shutdown() {
     glfwDestroyWindow(mWindow);

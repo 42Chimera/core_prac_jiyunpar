@@ -25,15 +25,16 @@ enum EventCategory {
 };
 
 #define EVENT_CLASS_CATEGORY(category) \
-    virtual GetCategoryFlags() const overide { return category; }
+    virtual int GetCategoryFlags() const override { return category; }
 
-#define EVENT_CLASS_TYPE(type)                                                 \
-    static EventType GetStaticType() { return EventType::##type; }             \
-    virtual EventType GetEventType() const overide { return GetStaticType(); } \
-    virtual const char* GetName() const overide { return #type; }
+#define EVENT_CLASS_TYPE(type)                                                  \
+    static EventType GetStaticType() { return EventType::type; }                \
+    virtual EventType GetEventType() const override { return GetStaticType(); } \
+    virtual const char* GetName() const override { return #type; }
 
 class CHIMERA_API Event {
    public:
+    virtual ~Event() = default;
     virtual EventType GetEventType() const = 0;
     virtual const char* GetName() const = 0;
     virtual int GetCategoryFlags() const = 0;
@@ -43,11 +44,7 @@ class CHIMERA_API Event {
         return GetCategoryFlags() & category;
     }
 
-    bool GetHandled() const { return mHandled; }
-    void SetHandled(bool state) { mHandled = state; }
-
-   private:
-    bool mHandled = false;
+    bool Handled = false;
 };
 
 class CHIMERA_API EventDispatcher {
@@ -60,7 +57,7 @@ class CHIMERA_API EventDispatcher {
     template <typename T>
     bool Dispatch(EventFunction<T> func) {
         if (mEvent.GetEventType() == T::GetStaticType()) {
-            mEvent.SetHandled(func(static_cast<T>(mEvent)));
+            mEvent.Handled |= func(static_cast<T&>(mEvent));
             return true;
         }
         return false;

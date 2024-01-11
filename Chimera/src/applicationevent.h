@@ -9,14 +9,14 @@ class CHIMERA_API WindowResizeEvent : public Event {
     inline uint32_t GetWidth() const { return mWidth; }
     inline uint32_t GetHeight() const { return mHeight; }
 
-    std::string Tostring() const override {
+    std::string Tostring() const {
         std::stringstream ss;
         ss << "WindowResizeEvent: " << mWidth << ", " << mHeight;
         return ss.str();
     }
 
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
     EVENT_CLASS_TYPE(WindowResize)
+    EVENT_CLASS_CATEGORY(EventCategoryApplication)
 
    private:
     uint32_t mWidth;
@@ -27,7 +27,13 @@ class CHIMERA_API WindowCloseEvent : public Event {
    public:
     WindowCloseEvent() {}
 
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
+    std::string Tostring() const {
+        std::stringstream ss;
+        ss << "WindowCloseEvent";
+        return ss.str();
+    }
+
     EVENT_CLASS_TYPE(WindowClose)
+    EVENT_CLASS_CATEGORY(EventCategoryApplication)
 };
 }  // namespace Chimera
