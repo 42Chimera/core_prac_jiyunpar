@@ -1,16 +1,16 @@
 #pragma once
 
-#include <iostream>
 #include <algorithm>
-#include <utility>
-#include <memory>
 #include <functional>
+#include <iostream>
+#include <memory>
+#include <utility>
 
-#include <string>
 #include <sstream>
-#include <vector>
+#include <string>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
 #include "core.h"
 #include "logger.h"
