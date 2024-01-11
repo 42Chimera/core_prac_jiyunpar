@@ -5,7 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 project(${PROJECT_NAME})
 
-file(GLOB_RECURSE SOURCES "src/*.cpp")
+set(SOURCES "src/application.cpp"
+            "src/logger.cpp"
+            "src/macoswindow.cpp"
+            )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
