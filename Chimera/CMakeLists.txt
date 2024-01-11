@@ -8,6 +8,8 @@ project(${PROJECT_NAME})
 set(SOURCES "src/application.cpp"
             "src/logger.cpp"
             "src/macoswindow.cpp"
+            "src/layer.cpp"
+            "src/layerstack.cpp"
             )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})

@@ -3,19 +3,25 @@
 #include "applicationevent.h"
 #include "pch.h"
 #include "window.h"
+#include "layerstack.h"
 namespace Chimera {
 class CHIMERA_API Application {
 public:
   Application();
   virtual ~Application();
-  virtual void Run();
+  void Run();
 
-  virtual void OnEvent(Event &event);
+  void OnEvent(Event& event);
 
-  virtual bool OnWindowClose(WindowCloseEvent &event);
+  void PushLayer(Layer* layer);
+  void PushOverlay(Layer* overlay);
+
+private:
+  virtual bool OnWindowClose(WindowCloseEvent& event);
 
 private:
   std::unique_ptr<Window> mWindow;
+  LayerStack mLayerStack;
   bool mRunning = true;
 };
 
